@@ -1,0 +1,4 @@
+name: Kiara
+version: 1.0
+main: de.mcgregordev.kiara.core.CorePlugin
+auhtor: Matthew

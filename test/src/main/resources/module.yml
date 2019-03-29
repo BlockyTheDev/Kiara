@@ -1,0 +1,5 @@
+name: test
+version: 1.0
+author: Langomatisch
+dependencies: []
+main: de.mcgregordev.kiara.test.TestModule

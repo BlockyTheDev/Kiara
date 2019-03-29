@@ -1,0 +1,6 @@
+name: Debug
+version: 1.0
+author: Matthew
+main: de.mcgregordev.kiara.debug.DebugModule
+
+dependencies: [test]
