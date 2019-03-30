@@ -1,30 +1,29 @@
-package de.mcgregordev.kiara.scoreboard.listener;
+package de.mcgregordev.kiara.scoreboard.task;
 
 import de.mcgregordev.kiara.scoreboard.ScoreboardModule;
 import de.mcgregordev.kiara.scoreboard.scoreboard.SidebarBuilder;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerJoinListener implements Listener {
+public class UpdateTask implements Runnable {
     
     private ScoreboardModule module;
     
-    public PlayerJoinListener( ScoreboardModule module ) {
+    public UpdateTask( ScoreboardModule module ) {
         this.module = module;
     }
     
-    @EventHandler
-    public void onJoin( PlayerJoinEvent event ) {
-        Player player = event.getPlayer();
-        String[] lines = replaceVariables( player, module.getScoreboardContent() ).toArray( new String[ 0 ] );
-        String title = replaceVariables( player, module.getScoreboardTitle() );
-        new SidebarBuilder().add( lines ).setTitle( title ).send( player );
+    @Override
+    public void run() {
+        for ( Player player : Bukkit.getOnlinePlayers() ) {
+            String[] lines = replaceVariables( player, module.getScoreboardContent() ).toArray( new String[ 0 ] );
+            String title = replaceVariables( player, module.getScoreboardTitle() );
+            new SidebarBuilder().add( lines ).setTitle( title ).send( player );
+        }
     }
     
     private String replaceVariables( Player player, String string ) {
@@ -38,4 +37,5 @@ public class PlayerJoinListener implements Listener {
         }
         return newList;
     }
+    
 }

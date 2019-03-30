@@ -1,4 +1,4 @@
-package de.mcgregordev.kiara.scoreboard.events;
+package de.mcgregordev.kiara.scoreboard.event;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;

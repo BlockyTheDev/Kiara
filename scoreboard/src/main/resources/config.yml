@@ -2,6 +2,9 @@ moduleScoreboard: true
 
 use-rank-module: true
 
+auto-update: true
+update-interval: 10
+
 scoreboard-title: %name%
 scoreboard:
   - test1

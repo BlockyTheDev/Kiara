@@ -7,3 +7,4 @@
 * **`debug: `** **just for testing purposes**
 * **`scoreboard: `** **creates and manages scoreboards**
 * **`rank: `** **manages and creates ranks**
+* **`database: `** **manages and creates databases**

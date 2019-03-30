@@ -8,6 +8,8 @@
 ##config
 * **`moduleScoreboard:`** **reather the module or the client can use this module**
 * **`use-rank-module:`** **reather the rank module should be used or not**
+* **`auto-update:`** **defines if the scoreboard should update automatically**
+* **`update-interval:`** **defines how often the scoreboard should update**
 * **`scoreboard-title:`** **defines the title for the custom scoreboard**
 * **`scoreboard:`** **defines the content for the custom scoreboard**
 

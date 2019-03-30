@@ -21,6 +21,7 @@
         <module>debug</module>
         <module>scoreboard</module>
         <module>rank</module>
+        <module>database</module>
     </modules>
 
     <dependencies>
