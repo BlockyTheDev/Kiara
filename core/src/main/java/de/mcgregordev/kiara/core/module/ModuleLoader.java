@@ -46,20 +46,15 @@ public class ModuleLoader {
                 toLoad.remove( module.getName() );
             }
         }
-        System.out.println( "loaded everything in " + ( System.currentTimeMillis() - l ) + "ms" );
+        System.out.println( "loaded " + loadedModules.size() + " modules in " + ( System.currentTimeMillis() - l ) + "ms" );
     }
     
     private void loadModulesFromFolder() {
         for ( File file : Objects.requireNonNull( new File( path ).listFiles() ) ) {
             if ( file.getName().endsWith( ".jar" ) ) {
                 try {
-                    //System.load( file.getAbsolutePath() );
-                    //URLClassLoader child = new URLClassLoader( new URL[]{ file.toURI().toURL() }, this.getClass().getClassLoader() );
-                    
                     ZipFile javaFile = new ZipFile( file );
                     ZipEntry entry = javaFile.getEntry( "module.yml" );
-                    javaFile.close();
-                    
                     FileConfiguration config = YamlConfiguration.loadConfiguration( new InputStreamReader( javaFile.getInputStream( entry ) ) );
                     String main = config.getString( "main" );
                     Module module = loadIntoRuntime( file, main );
@@ -67,10 +62,12 @@ public class ModuleLoader {
                     module.setAuthor( config.getString( "author" ) );
                     module.setVersion( config.getDouble( "version" ) );
                     module.setDependencies( config.getStringList( "dependencies" ).toArray( new String[ 0 ] ) );
-                    module.setFile( file );
+                    module.setFile( file.getParentFile() );
                     module.setMain( main );
                     module.onLoad();
+                    module.setupConfig();
                     toLoad.put( module.getName(), module );
+                    javaFile.close();
                 } catch ( IOException | IllegalAccessException | ClassNotFoundException | InstantiationException | NoSuchMethodException | InvocationTargetException e ) {
                     e.printStackTrace();
                 }

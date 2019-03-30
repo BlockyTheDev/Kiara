@@ -1,0 +1,9 @@
+moduleScoreboard: true
+
+use-rank-module: true
+
+scoreboard-title: %name%
+scoreboard:
+  - test1
+  - test2
+  - test3

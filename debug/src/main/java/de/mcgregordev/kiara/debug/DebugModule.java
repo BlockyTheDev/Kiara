@@ -8,7 +8,7 @@ public class DebugModule extends Module {
     @Override
     public void onEnable() {
         System.out.println( "loading debug" );
-        TestModule module = getModule( TestModule.class );
+        TestModule module = getModule( "test" );
         System.out.println( "testmodule loaded? " + ( module != null ) );
     }
 }

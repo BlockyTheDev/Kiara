@@ -1,0 +1,5 @@
+name: Scoreboard
+version: 1.0
+main: de.mcgregordev.kiara.scoreboard.ScoreboardModule
+author: Matthew
+dependencies: []

@@ -9,11 +9,12 @@ public class CorePlugin extends JavaPlugin {
     
     @Getter
     private static CorePlugin instance;
-    private ModuleLoader moduleLoader = new ModuleLoader( getDataFolder().getAbsolutePath() + "/modules/" );
+    private ModuleLoader moduleLoader;
     
     @Override
     public void onEnable() {
         instance = this;
+        moduleLoader = new ModuleLoader( getDataFolder().getAbsolutePath() + "/Modules/" );
     }
     
     @Override
