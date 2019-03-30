@@ -18,9 +18,9 @@
 
     <modules>
         <module>core</module>
-        <module>test</module>
         <module>debug</module>
         <module>scoreboard</module>
+        <module>rank</module>
     </modules>
 
     <dependencies>

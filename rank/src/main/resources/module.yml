@@ -1,0 +1,5 @@
+name: Rank
+version: 1.0
+author: Matthew
+main: de.mcgregordev.kiara.rank.RankModule
+dependencies: []
