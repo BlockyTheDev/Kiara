@@ -20,7 +20,7 @@ import java.lang.reflect.Field;
 public abstract class Module {
     
     private CorePlugin corePlugin;
-    private ModuleLoader moduleLoader = ModuleLoader.getInstance();
+    private static ModuleLoader moduleLoader = ModuleLoader.getInstance();
     private String name;
     private String author;
     private double version;
@@ -78,7 +78,7 @@ public abstract class Module {
     
     }
     
-    public <O> O getModule( String s ) {
+    public static <O> O getModule( String s ) {
         for ( Module module : moduleLoader.getLoadedModules() ) {
             if ( module.getName().equalsIgnoreCase( s ) ) {
                 return (O) module;

@@ -8,6 +8,7 @@ import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.Arrays;
 import java.util.List;
@@ -42,7 +43,10 @@ public class ScoreboardModule extends Module {
         registerListener( new PlayerJoinListener( this ) );
         registerVariables();
         if ( autoUpdate ) {
-            Bukkit.getScheduler().runTaskTimerAsynchronously( getCorePlugin(), new UpdateTask( this ), 0, 20 * updateInterval );
+            Bukkit.getScheduler().runTaskTimer( getCorePlugin(), new UpdateTask( this ), 0, 20 * updateInterval );
+        }
+        for ( Player player : Bukkit.getOnlinePlayers() ) {
+            Bukkit.getPluginManager().callEvent( new PlayerJoinEvent( player, "" ) );
         }
     }
     

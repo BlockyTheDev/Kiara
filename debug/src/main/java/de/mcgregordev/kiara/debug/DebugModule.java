@@ -1,14 +1,15 @@
 package de.mcgregordev.kiara.debug;
 
-import de.mcgregordev.kiara.core.module.Module;
-import de.mcgregordev.kiara.test.TestModule;
+import com.google.common.reflect.ClassPath;
 
-public class DebugModule extends Module {
+import java.io.IOException;
+
+public class DebugModule {
     
-    @Override
-    public void onEnable() {
-        System.out.println( "loading debug" );
-        TestModule module = getModule( "test" );
-        System.out.println( "testmodule loaded? " + ( module != null ) );
+    public static void main( String[] args ) throws IOException {
+        for ( ClassPath.ClassInfo classInfo : ClassPath.from( ClassLoader.getSystemClassLoader() ).getAllClasses() ) {
+            System.out.println( classInfo.getName() );
+        }
     }
+    
 }
