@@ -1,0 +1,5 @@
+name: Nick
+version: 1.0
+author: Matthew
+main: de.mcgregordev.kiara.nick.NickModule
+dependencies: []

@@ -14,6 +14,7 @@ import org.bukkit.event.Listener;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.nio.file.Path;
 
 @Getter
 @Setter(AccessLevel.PACKAGE)
@@ -94,4 +95,17 @@ public abstract class Module {
     public void registerListener( Listener listener ) {
         Bukkit.getPluginManager().registerEvents( listener, CorePlugin.getInstance() );
     }
+    
+    public void registerListener( String path ) {
+        try {
+            for ( Class<?> aClass : Class.forName( path ).getClasses() ) {
+                if ( aClass.isInstance( Listener.class ) ) {
+                    registerListener( (Listener) aClass.newInstance() );
+                }
+            }
+        } catch ( ClassNotFoundException | IllegalAccessException | InstantiationException e ) {
+            e.printStackTrace();
+        }
+    }
+    
 }
