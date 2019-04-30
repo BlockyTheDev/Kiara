@@ -7,4 +7,5 @@
 * **`debug: `** **just for testing purposes**
 * **`scoreboard: `** **creates and manages scoreboards**
 * **`rank: `** **manages and creates ranks**
+* **`nick: `** **let players disguise as other players**
 * **`database: `** **manages and creates databases**
