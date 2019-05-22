@@ -1,6 +1,7 @@
-package de.mcgregordev.kiara.scoreboard.storage;
+package de.mcgregordev.kiara.core.storage;
 
 import de.mcgregordev.kiara.core.module.Module;
+import de.mcgregordev.kiara.core.storage.Variable;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 

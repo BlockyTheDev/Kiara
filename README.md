@@ -3,9 +3,9 @@
 
 ##Modules
 
-* **`core: `** **main way to inject modules into spigot plugins**
-* **`debug: `** **just for testing purposes**
-* **`scoreboard: `** **creates and manages scoreboards**
-* **`rank: `** **manages and creates ranks**
-* **`nick: `** **let players disguise as other players**
-* **`database: `** **manages and creates databases**
+* **`core:`** **main way to inject modules into spigot plugins**
+* **`debug:`** **just for testing purposes**
+* **`scoreboard:`** **create and manage scoreboards**
+* **`rank:`** **manage and create ranks**
+* **`nick:`** **lets a player disguise as a other player**
+* **`database:`** **manage and create database connections**

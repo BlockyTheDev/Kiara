@@ -3,18 +3,15 @@ package de.mcgregordev.kiara.rank;
 import de.mcgregordev.kiara.core.module.Module;
 import de.mcgregordev.kiara.rank.object.Rank;
 import de.mcgregordev.kiara.scoreboard.ScoreboardModule;
-import de.mcgregordev.kiara.scoreboard.storage.Variable;
-import de.mcgregordev.kiara.scoreboard.storage.VariableStorage;
+import de.mcgregordev.kiara.core.storage.VariableStorage;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
-import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 public class RankModule extends Module {

@@ -1,6 +1,8 @@
 package de.mcgregordev.kiara.core.module;
 
 import de.mcgregordev.kiara.core.CorePlugin;
+import de.mcgregordev.kiara.core.message.Message;
+import de.mcgregordev.kiara.core.message.MessageStorage;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,6 +33,7 @@ public abstract class Module {
     private CommandMap commandMap;
     private File dataFolder, configFile;
     private FileConfiguration config;
+    private MessageStorage messageStorage;
     
     public Module() {
         corePlugin = CorePlugin.getInstance();
@@ -42,6 +45,7 @@ public abstract class Module {
         } catch ( NoSuchFieldException | IllegalAccessException e ) {
             e.printStackTrace();
         }
+        messageStorage = new MessageStorage(this);
     }
     
     protected void setupConfig() {
@@ -79,7 +83,7 @@ public abstract class Module {
     
     }
     
-    public static <O> O getModule( String s ) {
+    protected static <O> O getModule( String s ) {
         for ( Module module : moduleLoader.getLoadedModules() ) {
             if ( module.getName().equalsIgnoreCase( s ) ) {
                 return (O) module;
@@ -88,11 +92,11 @@ public abstract class Module {
         return null;
     }
     
-    public void registerCommand( Command command ) {
+    protected void registerCommand( Command command ) {
         commandMap.register( command.getName(), command );
     }
     
-    public void registerListener( Listener listener ) {
+    protected void registerListener( Listener listener ) {
         Bukkit.getPluginManager().registerEvents( listener, CorePlugin.getInstance() );
     }
     
@@ -107,5 +111,10 @@ public abstract class Module {
             e.printStackTrace();
         }
     }
-    
+
+    public void addMessage(String key, Message message) {
+        messageStorage.addMessage(key, message);
+    }
+
+
 }

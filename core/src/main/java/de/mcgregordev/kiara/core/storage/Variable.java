@@ -1,4 +1,4 @@
-package de.mcgregordev.kiara.scoreboard.storage;
+package de.mcgregordev.kiara.core.storage;
 
 import org.bukkit.entity.Player;
 
