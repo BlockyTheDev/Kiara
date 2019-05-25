@@ -2,14 +2,12 @@ package de.mcgregordev.kiara.nick.user;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
 import de.mcgregordev.kiara.nick.NickModule;
 import de.mcgregordev.kiara.nick.util.NickUtil;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.entity.Player;
 
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -45,7 +43,7 @@ public class NickUser {
         isNicked = !isNicked;
         Futures.addCallback(NickUtil.nickPlayer(player, name), new FutureCallback<String>() {
             @Override
-            public void onSuccess(@Nullable String name) {
+            public void onSuccess(String name) {
                 player.sendMessage(module.getMessageStorage().getMessage("command.nick.success", name));
             }
 
