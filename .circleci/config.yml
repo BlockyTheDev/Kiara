@@ -2,6 +2,6 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/java:8u211
+      - image: circleci/proc/java:8u212
     steps:
       - run: mvn clean install
