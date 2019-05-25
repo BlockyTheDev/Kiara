@@ -2,4 +2,4 @@ version: 2
 jobs:
   build:
     steps:
-      - mvn clean install
+      - run: mvn clean install
