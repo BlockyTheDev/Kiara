@@ -46,12 +46,12 @@ public class NickUser {
         Futures.addCallback(NickUtil.nickPlayer(player, name), new FutureCallback<String>() {
             @Override
             public void onSuccess(@Nullable String name) {
-                player.sendMessage(module.getMessageStorage().getMessage("nicked", name));
+                player.sendMessage(module.getMessageStorage().getMessage("command.nick.success", name));
             }
 
             @Override
             public void onFailure(Throwable ignored) {
-                player.sendMessage("§cEs ist irgendwas schief gelaufen");
+                player.sendMessage(module.getMessageStorage().getMessage("command.nick.error"));
             }
         });
     }

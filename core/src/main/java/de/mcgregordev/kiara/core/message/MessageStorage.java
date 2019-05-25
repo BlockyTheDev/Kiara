@@ -34,7 +34,7 @@ public class MessageStorage {
     }
 
     public String getMessage(String key, Object... arguments) {
-        return messageMap.getOrDefault(key, new Message(key, "N/A")).translate(arguments);
+        return messageMap.getOrDefault(key, new Message(key, "N/A ("+key+")")).translate(arguments);
     }
 
 }
