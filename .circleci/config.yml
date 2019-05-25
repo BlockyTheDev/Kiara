@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/proc/java:8u212
+      - image: circleci/openjdk:8-jdk-browsers
     steps:
       - checkout
       - run: mvn clean install
