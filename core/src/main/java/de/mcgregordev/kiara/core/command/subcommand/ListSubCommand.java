@@ -20,6 +20,5 @@ public class ListSubCommand extends SubCommand {
         List<Module> loadedModules = ModuleLoader.getInstance().getLoadedModules();
         commandSender.sendMessage("§aLoaded Modules: (" + loadedModules.size() + ")");
         commandSender.sendMessage(Arrays.toString(loadedModules.stream().map(Module::getName).toArray()));
-        super.onCommand(commandSender, module, args);
     }
 }

@@ -31,8 +31,12 @@ public class ModuleCommand extends Command {
             for (String command : subCommand.getSubCommands()) {
                 if (command.equalsIgnoreCase(strings[0])) {
                     subCommand.onCommand(commandSender, null, (String[]) ArrayUtils.subarray(strings, 0, 1));
+                    return true;
                 }
             }
+        }
+        for (SubCommand command : subCommands) {
+            commandSender.sendMessage("/module " + command.getSubCommands()[0]);
         }
         return false;
     }

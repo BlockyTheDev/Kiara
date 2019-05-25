@@ -5,7 +5,7 @@ import lombok.Getter;
 import org.bukkit.command.CommandSender;
 
 @Getter
-public class SubCommand {
+public abstract class SubCommand {
 
     private String[] subCommands;
 
@@ -19,8 +19,6 @@ public class SubCommand {
      * @param module null if module isnt needed
      * @param args all arguments after the module selector
      */
-    public void onCommand(CommandSender commandSender, Module module, String[] args) {
-
-    }
+    public abstract void onCommand(CommandSender commandSender, Module module, String[] args);
 
 }
