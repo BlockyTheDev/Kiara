@@ -5,6 +5,12 @@ jobs:
       - image: circleci/openjdk:8-jdk-browsers
     steps:
       - checkout
-      - run: mvn clean install
+      - restore_cache:
+          key: lango-kiara-{{ checksum "pom.xml" }}
+      - run: mvn clean install -pl core,rank,scoreboard
       - store_artifacts:
-          path: "*/target/*.jar"
+          path: target/
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: lango-kiara-{{ checksum "pom.xml" }}
