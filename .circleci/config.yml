@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    machine:
-      - image: "circleci/java:1.8"
+    docker:
+      - image: circleci/java:8u211
     steps:
       - run: mvn clean install
