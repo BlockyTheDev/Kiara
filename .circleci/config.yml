@@ -2,6 +2,6 @@ version: 2
 jobs:
   build:
     machine:
-      - image: circleci/node:4.8.2
+      - image: circleci/java:1.8
     steps:
       - run: mvn clean install
