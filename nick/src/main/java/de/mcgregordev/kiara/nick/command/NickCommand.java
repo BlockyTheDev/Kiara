@@ -17,7 +17,7 @@ public class NickCommand extends Command {
     public boolean execute( CommandSender commandSender, String s, String[] strings ) {
         Player player = (Player) commandSender;
         NickUser nickUser = NickUser.getNickUser( player );
-        nickUser.nick( strings[ 0 ] );
+        nickUser.nick();
         return false;
     }
 }

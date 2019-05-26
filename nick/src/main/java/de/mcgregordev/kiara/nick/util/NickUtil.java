@@ -19,6 +19,7 @@ import java.io.InputStream;
 import java.lang.reflect.*;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.Executors;
@@ -49,15 +50,18 @@ public class NickUtil {
         return name;
     }
     
-    public static String getSkin( UUID uuid ) {
-        JSONObject json = getJSON( uuid.toString().replaceAll( "-", "" ) );
-        return ( (JSONObject) ( (JSONArray) json.get( "properties" ) ).get( 0 ) ).get( "value" ).toString();
+    public static JSONObject getSkinData( UUID uuid ) {
+        Bukkit.broadcastMessage( uuid.toString() );
+        String uuid1 = uuid.toString().replaceAll( "-", "" );
+        JSONObject json = getJSON( uuid1 );
+        JSONObject properties = (JSONObject) ( (JSONArray) json.get( "properties" ) ).get( 0 );
+        return properties;
     }
     
-    public static String getSigniture( UUID uuid ) {
+    /*public static String getSigniture( UUID uuid ) {
         JSONObject json = getJSON( uuid.toString().replaceAll( "-", "" ) );
         return ( (JSONObject) ( (JSONArray) json.get( "properties" ) ).get( 0 ) ).get( "signature" ).toString();
-    }
+    }*/
     
     private static JSONObject getJSON( String uuid ) {
         if ( !textureCache.containsKey( uuid ) ) {
@@ -144,8 +148,9 @@ public class NickUtil {
             }
             
             UUID uuid = UUIDFetcher.getUUID( name );
-            final String skin = getSkin( uuid );
-            final String signature = getSigniture( uuid );
+            final JSONObject object = getSkinData( uuid );
+            final String skin = object.get( "value" ).toString();
+            final String signature = object.get( "signature" ).toString();
             final Property textures = new Property( "textures", skin, signature );
             final boolean canFly = player.getAllowFlight();
             

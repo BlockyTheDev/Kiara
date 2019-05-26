@@ -11,3 +11,8 @@
 * **`rank:`** **manage and create ranks**
 * **`nick:`** **lets a player disguise as a other player**
 * **`database:`** **manage and create database connections**
+
+# Building
+
+* To build the project, you need to clone the project with ´git clone <url>´.
+* then you go into the folder and type into your cmd ´mvn clean install´ (maven has to be installed)

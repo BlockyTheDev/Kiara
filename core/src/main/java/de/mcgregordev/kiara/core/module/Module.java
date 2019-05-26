@@ -1,8 +1,8 @@
 package de.mcgregordev.kiara.core.module;
 
 import de.mcgregordev.kiara.core.CorePlugin;
-import de.mcgregordev.kiara.core.message.Message;
-import de.mcgregordev.kiara.core.message.MessageStorage;
+import de.mcgregordev.kiara.core.storage.Message;
+import de.mcgregordev.kiara.core.storage.MessageStorage;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,7 +45,6 @@ public abstract class Module {
         } catch ( NoSuchFieldException | IllegalAccessException e ) {
             e.printStackTrace();
         }
-        messageStorage = new MessageStorage(this);
     }
     
     protected void setupConfig() {
@@ -80,7 +79,6 @@ public abstract class Module {
     }
     
     public void onLoad() {
-    
     }
     
     protected static <O> O getModule( String s ) {

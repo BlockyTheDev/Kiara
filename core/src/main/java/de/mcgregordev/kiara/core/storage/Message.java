@@ -1,4 +1,4 @@
-package de.mcgregordev.kiara.core.message;
+package de.mcgregordev.kiara.core.storage;
 
 import lombok.Getter;
 import lombok.Setter;

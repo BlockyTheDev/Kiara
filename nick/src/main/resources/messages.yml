@@ -1,0 +1,4 @@
+command:
+  nick:
+    success: '&aDu wurdest erfolgreich genickt als: &e%s'
+    error: '&cEs gab einen Fehler'
