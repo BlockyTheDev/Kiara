@@ -4,10 +4,15 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
+import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,7 +31,7 @@ public class NickUtil {
     
     private static final String SKINURL = "http://skinapi.minesucht.net/";
     private static HashMap<String, JSONObject> textureCache = new HashMap<>();
-   // private static Field nickField = accessField( GameProfile.class, "name" );
+    private static Field nickField = accessField( GameProfile.class, "name" );
     
     private static boolean is13OrAbove() {
         return VERSION.contains( "13" ) || VERSION.contains( "14" );
@@ -63,12 +68,10 @@ public class NickUtil {
                 in = con.getInputStream();
                 String encoding = con.getContentEncoding();
                 encoding = encoding == null ? "UTF-8" : encoding;
-                /*JSONObject obj = (JSONObject) new JSONParser().parse( IOUtils.toString( in, encoding ) );
+                JSONObject obj = (JSONObject) new JSONParser().parse( IOUtils.toString( in, encoding ) );
                 textureCache.put( uuid, obj );
-                return obj;/*
-                 */
-                return null;
-            } catch ( IOException  e ) {
+                return obj;
+            } catch ( IOException | ParseException e ) {
                 e.printStackTrace();
             }
         } else {
@@ -109,8 +112,8 @@ public class NickUtil {
             
             Object craftPlayer = craftPlayerClass.cast( player );
             Object entityPlayer = getHandle.invoke( craftPlayer );
-            /*GameProfile gameProfile = (GameProfile) getProfile.invoke( craftPlayer );
-            */
+            GameProfile gameProfile = (GameProfile) getProfile.invoke( craftPlayer );
+            
             Constructor<?> playerInfoConstructor = playerInfoPacketClass.getConstructor( enumPlayerInfoActionField.getType(), Array.newInstance( entityPlayerClass, 1 ).getClass() );
             Constructor<?> playerRespawnConstructor;
             
@@ -143,17 +146,17 @@ public class NickUtil {
             UUID uuid = UUIDFetcher.getUUID( name );
             final String skin = getSkin( uuid );
             final String signature = getSigniture( uuid );
-            //final Property textures = new Property( "textures", skin, signature );
+            final Property textures = new Property( "textures", skin, signature );
             final boolean canFly = player.getAllowFlight();
             
-            //gameProfile.getProperties().removeAll( "textures" );
-            //gameProfile.getProperties().put( "textures", textures );
+            gameProfile.getProperties().removeAll( "textures" );
+            gameProfile.getProperties().put( "textures", textures );
             
-            /*try {
+            try {
                 nickField.set( gameProfile, name );
             } catch ( IllegalAccessException var8 ) {
                 var8.printStackTrace();
-            }*/
+            }
             
             sendPacket( remove_player, player );
             sendPacket( add_player, player );

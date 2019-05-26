@@ -22,6 +22,7 @@
         <module>scoreboard</module>
         <module>rank</module>
         <module>nick</module>
+        <module>database</module>
     </modules>
 
     <repositories>
