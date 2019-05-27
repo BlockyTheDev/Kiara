@@ -3,7 +3,7 @@
 
 * **`Build`**: **[![CircleCI](https://circleci.com/gh/Langomatisch/Kiara.svg?style=svg)](https://circleci.com/gh/Langomatisch/Kiara)**
 
-##Modules
+# Modules
 
 * **`core:`** **main way to inject modules into spigot plugins**
 * **`debug:`** **just for testing purposes**
