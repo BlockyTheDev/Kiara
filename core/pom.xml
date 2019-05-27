@@ -12,10 +12,11 @@
     <artifactId>core</artifactId>
 
     <dependencies>
+
         <dependency>
             <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <artifactId>spigot</artifactId>
+            <version>1.12.2-R0.1-20190527.001953-1</version>
         </dependency>
         <dependency>
             <groupId>org.yaml</groupId>

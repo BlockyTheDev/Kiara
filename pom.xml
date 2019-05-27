@@ -28,7 +28,7 @@
     <repositories>
         <repository>
             <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <url>http://145.239.150.219:8081/artifactory/libs-snapshot-local/</url>
         </repository>
     </repositories>
 
