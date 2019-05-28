@@ -7,12 +7,6 @@ dependencies
 
 * **`none`**
 
-build
------
-
-you have to build the module by yourself cause of nms things.
-just type in the nick folder ´mvn clean install´ then it should generate a target folder with your module in it
-
 config
 ------
 * **`isLobby:`** **Used to see if the Nick command should work.**
