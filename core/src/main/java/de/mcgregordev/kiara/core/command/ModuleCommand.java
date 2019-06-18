@@ -1,5 +1,6 @@
 package de.mcgregordev.kiara.core.command;
 
+import de.mcgregordev.kiara.core.command.subcommand.GUISubCommand;
 import de.mcgregordev.kiara.core.command.subcommand.ListSubCommand;
 import de.mcgregordev.kiara.core.module.Module;
 import de.mcgregordev.kiara.core.module.ModuleLoader;
@@ -23,15 +24,18 @@ public class ModuleCommand extends Command {
         super("module");
         setPermission("command.module");
         new ListSubCommand("list");
+        new GUISubCommand("gui");
     }
 
     @Override
     public boolean execute(CommandSender commandSender, String s, String[] strings) {
-        for (SubCommand subCommand : subCommands) {
-            for (String command : subCommand.getSubCommands()) {
-                if (command.equalsIgnoreCase(strings[0])) {
-                    subCommand.onCommand(commandSender, null, (String[]) ArrayUtils.subarray(strings, 0, 1));
-                    return true;
+        if(strings.length > 0) {
+            for (SubCommand subCommand : subCommands) {
+                for (String command : subCommand.getSubCommands()) {
+                    if (command.equalsIgnoreCase(strings[0])) {
+                        subCommand.onCommand(commandSender, null, (String[]) ArrayUtils.subarray(strings, 0, 1));
+                        return true;
+                    }
                 }
             }
         }

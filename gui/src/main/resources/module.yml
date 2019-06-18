@@ -1,5 +1,0 @@
-name: GUI
-version: 1.0
-author: Matthew
-main: de.mcgregordev.kiara.gui.GUIModule
-dependencies: []

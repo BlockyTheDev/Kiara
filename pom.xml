@@ -23,7 +23,6 @@
         <module>rank</module>
         <module>nick</module>
         <module>database</module>
-        <module>gui</module>
     </modules>
 
     <repositories>
