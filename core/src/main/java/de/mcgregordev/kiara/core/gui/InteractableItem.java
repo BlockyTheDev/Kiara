@@ -2,6 +2,7 @@ package de.mcgregordev.kiara.core.gui;
 
 import de.mcgregordev.kiara.core.CorePlugin;
 import de.mcgregordev.kiara.core.item.ItemBuilder;
+import de.mcgregordev.kiara.core.item.NBTModifier;
 import de.mcgregordev.kiara.core.util.Callback;
 import de.mcgregordev.kiara.core.util.EmptyCallback;
 import lombok.Getter;
@@ -9,7 +10,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -18,6 +18,8 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.UUID;
 
 @Getter
 public class InteractableItem implements Listener {
@@ -29,12 +31,12 @@ public class InteractableItem implements Listener {
     private Callback<PlayerPickupItemEvent> pickUpCallback = new EmptyCallback<>();
 
     public InteractableItem(ItemStack itemStack) {
-        this.itemStack = itemStack;
+        this.itemStack = NBTModifier.setNBTTag(itemStack, UUID.randomUUID().toString(), UUID.randomUUID().toString());
         registerListener();
     }
 
     public InteractableItem(ItemBuilder itemBuilder) {
-        this.itemStack = itemBuilder.build();
+        this.itemStack = NBTModifier.setNBTTag(itemBuilder.build(), UUID.randomUUID().toString(), UUID.randomUUID().toString());
         registerListener();
     }
 
