@@ -1,4 +1,4 @@
-  name: Test
-  version: 1.0
-  dependencies: []
-  main: de.mcgregordev.kiara.test.TestModule
+name: Test
+version: 1.0
+dependencies: []
+main: de.mcgregordev.kiara.test.TestModule
