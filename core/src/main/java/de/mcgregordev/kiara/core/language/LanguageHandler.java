@@ -26,8 +26,7 @@ public class LanguageHandler {
         }
     }
 
-    public String getMessage(Player player, String value, Variable... variables) {
-        String locale = player.getLocale();
+    public String getMessage(String locale, String value, Variable... variables) {
         Language language = languageMap.getOrDefault(locale, defaultLanguage);
         return language.getMessages().get(value).translate(variables);
     }
