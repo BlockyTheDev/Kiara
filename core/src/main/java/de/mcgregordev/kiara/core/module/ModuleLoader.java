@@ -1,6 +1,5 @@
 package de.mcgregordev.kiara.core.module;
 
-import de.mcgregordev.kiara.core.storage.MessageStorage;
 import lombok.Getter;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -67,7 +66,6 @@ public class ModuleLoader {
                     module.setMain( main );
                     module.onLoad();
                     module.setupConfig();
-                    module.setMessageStorage( new MessageStorage( module ) );
                     toLoad.put( module.getName(), module );
                     javaFile.close();
                 } catch ( IOException | IllegalAccessException | ClassNotFoundException | InstantiationException | NoSuchMethodException | InvocationTargetException e ) {

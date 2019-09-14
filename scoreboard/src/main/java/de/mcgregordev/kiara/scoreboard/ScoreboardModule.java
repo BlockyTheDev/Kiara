@@ -1,7 +1,6 @@
 package de.mcgregordev.kiara.scoreboard;
 
 import de.mcgregordev.kiara.core.module.Module;
-import de.mcgregordev.kiara.core.storage.VariableStorage;
 import de.mcgregordev.kiara.scoreboard.listener.PlayerJoinListener;
 import de.mcgregordev.kiara.scoreboard.task.UpdateTask;
 import lombok.Getter;

@@ -3,7 +3,6 @@ package de.mcgregordev.kiara.rank;
 import de.mcgregordev.kiara.core.module.Module;
 import de.mcgregordev.kiara.rank.object.Rank;
 import de.mcgregordev.kiara.scoreboard.ScoreboardModule;
-import de.mcgregordev.kiara.core.storage.VariableStorage;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;

@@ -2,30 +2,28 @@ package de.mcgregordev.kiara.core.language;
 
 import de.mcgregordev.kiara.core.module.Module;
 import de.mcgregordev.kiara.core.storage.Message;
-import de.mcgregordev.kiara.core.storage.MessageStorage;
 import lombok.Getter;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 @Getter
-public abstract class Language {
+public class Language {
 
     // something like de_DE
     private final String name;
     private final File file;
     private final FileConfiguration config;
-    private final MessageStorage messageStorage;
+    private Map<String, Message> messages = new HashMap<>();
 
-    public Language(Module module, String name, File file) {
+    public Language(String name, File file) {
         this.name = name;
         this.file = file;
         this.config = YamlConfiguration.loadConfiguration(file);
-        this.messageStorage = new MessageStorage(module);
-        config.getConfigurationSection("message").getValues(true).forEach((s, o) -> {
-            messageStorage.addMessage(s, new Message(s, (String) o));
-        });
+        config.getValues(true).forEach((s, o) -> messages.put(s, new Message(s, (String) o)));
     }
 
 }

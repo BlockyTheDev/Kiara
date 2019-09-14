@@ -1,12 +1,16 @@
 package de.mcgregordev.kiara.core.storage;
 
-import org.bukkit.entity.Player;
+import lombok.Getter;
 
-public interface Variable {
-    
-    /***
-     * @return the string the variable should replaced to
-     */
-    String replace( Player player );
-    
+@Getter
+public class Variable {
+
+    private String variableName;
+    private Object value;
+
+    public Variable(String variableName, Object value) {
+        this.variableName = variableName;
+        this.value = value;
+    }
+
 }

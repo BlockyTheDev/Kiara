@@ -2,6 +2,8 @@ package de.mcgregordev.kiara.core.storage;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 
 @Getter
 @Setter
@@ -15,8 +17,12 @@ public class Message {
         this.value = value;
     }
 
-    public String translate(Object... arguments) {
-        return String.format(value, arguments);
+    public String translate(Variable... arguments) {
+        String finalMessage = value;
+        for (Variable argument : arguments) {
+            finalMessage = finalMessage.replace("%" + argument.getVariableName() + "%", String.valueOf(argument.getValue()));
+        }
+        return ChatColor.translateAlternateColorCodes('&', finalMessage);
     }
 
 }
